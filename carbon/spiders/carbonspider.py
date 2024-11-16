@@ -1,6 +1,6 @@
 import scrapy
 
-class CarbonDpider(scrapy.Spider):
+class CarbonSpider(scrapy.Spider):
 
     name = "carbonspider"
 
@@ -25,27 +25,27 @@ class CarbonDpider(scrapy.Spider):
 
         yield{
             
-            "product_title" : response.css('h1.ProductMeta__Title.Heading.u-h3::text').get(),
+             "product_title" : response.css('h1.ProductMeta__Title.Heading.u-h3::text').get(),
 
-            "brand_name" : response.css('h2.ProductMeta__Vendor.Heading.u-h1 a::text').get(),
+             "brand_name" : response.css('h2.ProductMeta__Vendor.Heading.u-h1 a::text').get(),
 
-            "product_price" : response.css('span.ProductMeta__Price.Price::text').get(),
+             "product_price" : response.css('span.ProductMeta__Price.Price::text').get(),
 
-            "product_color" : response.css('span.ProductForm__SelectedValue::text').get(),
+             "product_color" : response.css('span.ProductForm__SelectedValue::text').get(),
 
-            "sizes" : response.css('ul.SizeSwatchList li.SizeSwatch label::text').getall(),
+            "sizes" : response.css('ul.SizeSwatchList li.HorizontalList__Item label.SizeSwatch::text').getall(),
 
-            "image_url" : response.css('div.AspectRatio img::attr(src)').get(),
+             "image_url" : response.css('div.AspectRatio img::attr(src)').get(),
 
-            "alt_text" : response.css('div.AspectRatio img::attr(alt)').get(),
+             "alt_text" : response.css('div.AspectRatio img::attr(alt)').get(),
 
-            "product_description" : response.css('div.Faq__AnswerWrapper div.Faq__Answer p::text').get(),
+             "product_description" : response.css('div.Faq__AnswerWrapper div.Faq__Answer p::text').get(),
 
-            "key_features" : response.css('div.Faq__AnswerWrapper div.Faq__Answer div.metaobject-entry div.metaobject-content::text').getall(),
+             "key_features" : response.css('div.Faq__AnswerWrapper div.Faq__Answer div.metaobject-entry div.metaobject-content::text').getall(),
 
-            "fabric_and_care" : response.css('div.Faq__Answer.Rte span.metafield-multi_line_text_field::text').get(),
+             "fabric_and_care" : response.css('div.Faq__Answer.Rte span.metafield-multi_line_text_field::text').get(),
 
-            "fit_info" : response.css('div.Faq__Answer.Rte p::text').get(),
+             "fit_info" : response.css('div.Faq__Answer.Rte p::text').get(),
 
         } 
 
